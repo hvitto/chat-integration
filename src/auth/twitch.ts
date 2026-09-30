@@ -16,7 +16,6 @@ export function twitchAuthorizeUrl(role: SessionRole, state: string): string {
     response_type: "code",
     scope: scopes,
     state: `${role}:${state}`,
-    force_verify: "true",
   });
   return `${TWITCH_AUTH}/authorize?${params.toString()}`;
 }

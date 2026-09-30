@@ -1,5 +1,5 @@
 import { google, type youtube_v3 } from "googleapis";
-import { and, eq } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 import { env, youtubeScopes } from "../config.js";
 import { db } from "../db/index.js";
 import { encryptToken, decryptToken } from "../db/crypto.js";
@@ -120,7 +120,7 @@ export async function unlinkYouTubeFromStreamer(twitchUserId: string) {
       youtubeAccessTokenEnc: null,
       youtubeRefreshTokenEnc: null,
       youtubeTokenExpiresAt: null,
-      relayEnabled: false,
+      relayEnabled: sql`${streamers.relayEnabled} and ${streamers.kickUserId} is not null`,
       updatedAt: new Date(),
     })
     .where(eq(streamers.twitchUserId, twitchUserId));

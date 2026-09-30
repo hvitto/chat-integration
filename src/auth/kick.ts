@@ -1,5 +1,5 @@
 import { createHash, randomBytes } from "node:crypto";
-import { and, eq } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 import { env, kickScopes } from "../config.js";
 import { db } from "../db/index.js";
 import { encryptToken, decryptToken } from "../db/crypto.js";
@@ -188,7 +188,7 @@ export async function unlinkKickFromStreamer(twitchUserId: string) {
       kickAccessTokenEnc: null,
       kickRefreshTokenEnc: null,
       kickTokenExpiresAt: null,
-      relayEnabled: false,
+      relayEnabled: sql`${streamers.relayEnabled} and ${streamers.youtubeChannelId} is not null`,
       updatedAt: new Date(),
     })
     .where(eq(streamers.twitchUserId, twitchUserId));

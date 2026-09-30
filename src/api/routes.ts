@@ -109,8 +109,18 @@ apiRouter.get("/api/me", async (req, res) => {
   });
 });
 
-apiRouter.get("/auth/twitch", (req, res) => {
+apiRouter.get("/auth/twitch", async (req, res) => {
   const role = (req.query.role as SessionRole) === "viewer" ? "viewer" : "streamer";
+  if (req.sessionUser?.role === role) {
+    const { twitchUserId } = req.sessionUser;
+    const account =
+      role === "streamer"
+        ? await db.query.streamers.findFirst({ where: eq(streamers.twitchUserId, twitchUserId) })
+        : await db.query.users.findFirst({ where: eq(users.twitchUserId, twitchUserId) });
+    if (account) {
+      return res.redirect(role === "streamer" ? "/dashboard" : "/link");
+    }
+  }
   const state = putState();
   res.redirect(twitchAuthorizeUrl(role, state));
 });

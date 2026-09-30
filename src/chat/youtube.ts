@@ -14,6 +14,8 @@ interface PollState {
   pageToken?: string;
   stopped: boolean;
   loggedWaiting?: boolean;
+  /** A 1ª página do liveChat traz o histórico recente; ignora o que é anterior ao start. */
+  startedAt: number;
 }
 
 const polls = new Map<string, PollState>();
@@ -118,7 +120,7 @@ export async function startYouTubeChatPolling(params: {
 }): Promise<void> {
   stopYouTubeChatPolling(params.streamerTwitchUserId);
 
-  const state: PollState = { stopped: false };
+  const state: PollState = { stopped: false, startedAt: Date.now() };
   polls.set(params.streamerTwitchUserId, state);
 
   console.log(`[youtube] polling start streamer=${params.streamerTwitchUserId}`);
@@ -157,6 +159,8 @@ export async function startYouTubeChatPolling(params: {
 
       for (const item of res.data.items ?? []) {
         const type = item.snippet?.type;
+        const publishedAt = Date.parse(item.snippet?.publishedAt ?? "");
+        if (Number.isFinite(publishedAt) && publishedAt < state.startedAt) continue;
 
         if (type === "messageDeletedEvent") {
           const deletedId =

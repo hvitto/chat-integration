@@ -1,0 +1,34 @@
+node_modules/
+dist/
+.env
+*.log
+.relay.lock
+.DS_Store
+drizzle/meta/
+
+# Taste Skill + Impeccable (local agent skills)
+.agents/
+.cursor/skills/
+.cursor/agents/
+.cursor/hooks.json
+skills-lock.json
+
+# impeccable-ignore-start
+# Runtime / per-developer Impeccable files. Shared artifacts
+# (.impeccable/config.json, design.json, critique/*.md) stay tracked.
+.impeccable/config.local.json
+.impeccable/hook.cache.json
+.impeccable/hook.pending.json
+.impeccable/*.png
+.impeccable/live/server.json
+.impeccable/live/sessions/
+.impeccable/live/previews/
+.impeccable/live/annotations/
+.impeccable/live/cache/
+.impeccable/live/manual-edit-apply-transaction.json
+.impeccable/live/manual-edit-events.jsonl
+.impeccable/live/manual-edit-evidence/
+.impeccable/live/pending-manual-edits.json
+.impeccable/live/deferred-svelte-component-accepts.json
+.impeccable/live/*.png
+# impeccable-ignore-end

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chat Bridge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">Chat Bridge</a>
+    <nav>
+      <a href="/auth/twitch?role=streamer">Streamer</a>
+      <a href="/link">Espectador</a>
+      <a href="/dashboard">Painel</a>
+    </nav>
+  </header>
+
+  <main class="shell asymmetric">
+    <aside class="rail" aria-hidden="true">
+      <p>OAUTH ESPECTADOR</p>
+      <p class="hot">YT → TWITCH</p>
+      <p>KK → TWITCH</p>
+      <p>NOME NATIVO</p>
+      <p>HUB · TWITCH</p>
+    </aside>
+
+    <figure class="hero" role="img" aria-label="Painel HUD Chat Bridge">
+      <div class="halftone"></div>
+      <ul>
+        <li>VÍNCULO</li>
+        <li>ID YT</li>
+        <li>@TWITCH</li>
+      </ul>
+      <span class="slot">4:5 · MEIO-TOM · SLOT HERO</span>
+    </figure>
+
+    <section class="pitch">
+      <h1>A mesma cara<br />em todo lugar.</h1>
+      <p>
+        A Twitch é o hub. Espectadores vinculam YouTube e Kick uma vez: a mensagem
+        chega na Twitch com o nome nativo. Streamers ligam o relay no painel.
+        Fácil. Divertido. Mais perto de cada sala.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="/link">Vincular contas</a>
+        <a class="btn" href="/auth/twitch?role=streamer">Entrar como streamer</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

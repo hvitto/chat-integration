@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vincular contas — Chat Bridge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">Chat Bridge</a>
+    <nav>
+      <a href="/">Início</a>
+      <a href="/link" aria-current="page">Vínculo do espectador</a>
+      <a href="/dashboard">Painel</a>
+    </nav>
+  </header>
+
+  <main class="shell narrow">
+    <header class="page-head">
+      <div>
+        <p class="meta">Espectador · a mesma cara em todo lugar</p>
+        <h1>Vincular contas</h1>
+        <p class="lede" id="streamer-hint">
+          Login na Twitch é obrigatório. Vincule YouTube e Kick. Suas mensagens chegam na Twitch com o seu @Twitch.
+        </p>
+      </div>
+    </header>
+
+    <ol class="steps">
+      <li id="step-twitch">
+        <h2>1 · Twitch</h2>
+        <p class="status" id="twitch-status">Pendente</p>
+        <div class="actions" id="twitch-actions"></div>
+      </li>
+      <li id="step-youtube">
+        <h2>2 · YouTube</h2>
+        <p class="status" id="youtube-status">Pendente</p>
+        <div class="actions" id="youtube-actions"></div>
+      </li>
+      <li id="step-kick">
+        <h2>3 · Kick</h2>
+        <p class="status" id="kick-status">Pendente</p>
+        <div class="actions" id="kick-actions"></div>
+      </li>
+    </ol>
+
+    <p class="success" id="confirm" hidden></p>
+    <div class="row">
+      <a class="btn" href="/">Início</a>
+      <button class="btn" type="button" id="logout" hidden>Sair</button>
+    </div>
+  </main>
+  <script src="/link.js" type="module"></script>
+</body>
+</html>

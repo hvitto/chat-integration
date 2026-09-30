@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Painel — Chat Bridge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">Chat Bridge</a>
+    <nav>
+      <a href="/">Início</a>
+      <a href="/dashboard" aria-current="page">Painel</a>
+      <a href="/link">Vínculo do espectador</a>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <header class="page-head">
+      <div>
+        <p class="meta">Streamer · controle do relay</p>
+        <h1 id="title">Painel</h1>
+        <p class="lede">Conecte YouTube e Kick. Ative o relay. Compartilhe o link da audiência.</p>
+      </div>
+      <button class="btn" type="button" id="logout">Sair</button>
+    </header>
+
+    <section class="panel-grid" aria-label="Plataformas">
+      <article class="panel" id="card-twitch">
+        <h2>Twitch</h2>
+        <p class="status" id="twitch-status">…</p>
+      </article>
+      <article class="panel" id="card-youtube">
+        <h2>YouTube</h2>
+        <p class="status" id="youtube-status">…</p>
+        <div class="actions" id="youtube-actions"></div>
+      </article>
+      <article class="panel" id="card-kick">
+        <h2>Kick</h2>
+        <p class="status" id="kick-status">…</p>
+        <div class="actions" id="kick-actions"></div>
+      </article>
+    </section>
+
+    <section class="block">
+      <h2>Relay</h2>
+      <p class="muted">Com o relay ligado, mensagens de espectadores vinculados passam entre as plataformas conectadas.</p>
+      <label class="toggle">
+        <input type="checkbox" id="relay-toggle" />
+        <span>Relay ativo</span>
+      </label>
+      <p class="error" id="relay-error"></p>
+    </section>
+
+    <section class="block">
+      <h2>Link da audiência</h2>
+      <p class="muted">Espectadores abrem este link para vincular Twitch + YouTube/Kick e aparecer com o nome nativo.</p>
+      <div class="row">
+        <code class="linkbox" id="audience-link"></code>
+        <button class="btn" type="button" id="copy-link">Copiar</button>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Overlay OBS</h2>
+      <p class="muted">Cole no OBS como Browser Source. Mensagens vinculadas aparecem uma vez (via Twitch); sem vínculo, com badge Kick/YouTube.</p>
+      <div class="row">
+        <code class="linkbox" id="overlay-link">Gere a URL abaixo</code>
+        <button class="btn" type="button" id="copy-overlay" disabled>Copiar</button>
+        <button class="btn primary" type="button" id="regen-overlay">Gerar / regenerar</button>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Registros</h2>
+      <ul id="logs" class="logs"></ul>
+    </section>
+  </main>
+  <script src="/dashboard.js" type="module"></script>
+</body>
+</html>
